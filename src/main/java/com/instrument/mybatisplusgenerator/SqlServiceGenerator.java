@@ -39,11 +39,11 @@ public class SqlServiceGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:sqlserver://172.16.8.202;DatabaseName=instrument");
+        dsc.setUrl("jdbc:sqlserver://222.22.2.222;DatabaseName=***");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dsc.setUsername("testdb");
-        dsc.setPassword("Ins@123");
+        dsc.setUsername("***");
+        dsc.setPassword("***");
         mpg.setDataSource(dsc);
 
         // 包配置

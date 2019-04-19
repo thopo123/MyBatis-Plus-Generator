@@ -19,6 +19,40 @@ import java.util.List;
  * @since 2018-09-12
  */
 public class SqlServiceGenerator {
+    /**
+     * 指定需要生成的表名称
+     */
+    private static String[] tableNames={"VIP","tt","tt_test"};
+    /**
+     * 指定数据库地址
+     */
+    private static String url = "jdbc:sqlserver://***.**.8.***;DatabaseName=***";
+    /**
+     * 指定数据库驱动名称
+     */
+    private static String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+    /**
+     * 数据库用户名
+     */
+    private static String userName = "***";
+    /**
+     * 数据库密码
+     */
+    private static String pwd = "***";
+    /**
+     * 指定代码生成人
+     */
+    private static String author ="ghf";
+    /**
+     * 指定模块名称
+     */
+    private static String moduleName ="generator";
+    /**
+     * 指定模块路径(java代码)
+     */
+    private static String modulePath ="com.instrument.mybatisplusgenerator";
+
+
 
     /**
      * RUN THIS
@@ -32,26 +66,25 @@ public class SqlServiceGenerator {
         String projectPath = System.getProperty("user.dir");
         gc.setOutputDir(projectPath + "/src/main/java");
         //指定代码生成人
-        gc.setAuthor("ghf");
+        gc.setAuthor(author);
         //生成完毕后，是否默认打开生成目录
         gc.setOpen(false);
         mpg.setGlobalConfig(gc);
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:sqlserver://222.22.2.222;DatabaseName=***");
-        // dsc.setSchemaName("public");
-        dsc.setDriverName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        dsc.setUsername("***");
-        dsc.setPassword("***");
+        dsc.setUrl(url);
+        dsc.setDriverName(driverName);
+        dsc.setUsername(userName);
+        dsc.setPassword(pwd);
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
         //指定模块名称
-        pc.setModuleName("generator");
+        pc.setModuleName(moduleName);
         //指定模块路径
-        pc.setParent("com.instrument.mybatisplusgenerator");
+        pc.setParent(modulePath);
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -82,7 +115,7 @@ public class SqlServiceGenerator {
         strategy.setEntityLombokModel(true);
        // strategy.setSuperControllerClass("com.baomidou.mybatisplus.samples.generator.common.BaseController");
         //需要生成的表
-        strategy.setInclude(new String[]{"VIP","tt"});
+        strategy.setInclude(tableNames);
         strategy.setSuperEntityColumns("id");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
